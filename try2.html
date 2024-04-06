@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ACLED Editable</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+
+  <!-- calls for the arcgis api's CSS file and JS library. -->
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.29/"></script>
+
+    <style>
+      html,
+      body,
+      html{
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }  
+      
+      #viewDiv {
+        position: relative; /* Ensure positioning context for absolutely positioned elements */
+        padding-bottom: 50px;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%; 
+      }
+      /* Header styles */
+      header {
+            background-color: lightseagreen;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff; /* Blue color */
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+        /* Footer styles */
+        footer {
+          background-color: lightseagreen;
+          color: white;
+          padding: 10px;
+          text-align: center;
+        }
+
+      #add {
+          margin-bottom: 5px;
+      }
+      #actions {
+          padding: 5px;
+      }
+
+    .button:hover {
+        background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+    .esri-button {
+         background-color: #0079c1;
+         margin: 5px;
+         padding: 10px 20px;
+        border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s;
+    }
+     .esri-button:hover {
+      background-color: #005d8f;
+     }
+     
+     
+    .esri-widget {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 300px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .esri-widget span {
+    flex: 1 1 50%; /* Each checkbox takes up 50% of the width */
+    }
+
+    .esri-widget input[type="checkbox"] {
+    margin: 5px; /* Add some margin around each checkbox */
+    }
+    </style>
+    
+  <!-- Adding the modules, API key, and map constant needed for a full screen map app -->
+  <script>
+  
+    require([
+     "esri/config",
+     "esri/Map",
+     "esri/views/MapView",
+     "esri/Basemap",
+     "esri/layers/VectorTileLayer",
+     "esri/widgets/LayerList",
+     "esri/layers/FeatureLayer",
+     "esri/Graphic",
+     "esri/widgets/Legend",
+     "esri/popup/content/ImageMediaInfo"
+    ], function (esriConfig, 
+          Map, 
+          MapView, 
+          Basemap,
+          VectorTileLayer,
+          LayerList,
+          FeatureLayer,
+          Graphic,
+          Legend) {
+
+      esriConfig.apiKey = "AAPKa07c0e60738b449d9d6867c2bcaf5bcdpgcNedZLTRW_CZWl7duKklx-WAga1fC7yNLC0D4k38nwzPDx_wHZ0BrW7x5WV-Zi";
+      const map = new Map({
+        basemap: "arcgis-topographic" // Basemap layer
+      });
+
+      const view = new MapView({
+          map: map,
+          center: [48.12453746120595, 6.599199814112166], // Longitude, latitude
+          zoom: 5, // Zoom level
+          container: "viewDiv" // Div element
+        });
+
+     const alshabaabLayer = new FeatureLayer({
+      url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/AlShabaab/FeatureServer" //get URL from AGOL Item Page
+    });
+
+   map.add(alshabaabLayer);
+
+   });
+  </script>
+
+  <!-- css to make a full screen map -->
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- the div to displays the map  -->
+  <div id="viewDiv"></div>
+
+</body>
+</html>
