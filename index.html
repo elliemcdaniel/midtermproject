@@ -31,23 +31,20 @@
             padding: 10px;
             text-align: center;
         }
-        .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007bff; /* Blue color */
-        color: white;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-        /* Footer styles */
-        footer {
-          background-color: lightseagreen;
+      /* Button styles */
+        .button{
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          z-index: 100; /* Ensure the button is above other elements */
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #007bff; /* Blue color */
           color: white;
-          padding: 10px;
-          text-align: center;
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
         }
 
       #add {
@@ -74,8 +71,7 @@
      .esri-button:hover {
       background-color: #005d8f;
      }
-     
-     
+    
      .esri-widget {
     display: flex;
     flex-wrap: wrap;
@@ -90,7 +86,7 @@
 .esri-widget input[type="checkbox"] {
     margin: 5px; /* Add some margin around each checkbox */
 }
-    </style>
+  </style>
 
     <script>
       require([
@@ -208,14 +204,10 @@
     <header>
         <h1>ACLED Editable</h1>
     </header>
-    <div id="viewDiv"></div>
     </div>
-    <footer>
-      <a href="https://survey123.arcgis.com/share/f8d97461aaa44e698d4a9e5446f59149?portalUrl=https://ufl.maps.arcgis.com" class="button" >Add an event</a>
-  </footer>
-
-
-
+    <!-- Below is link to Survey123 form and will show a 'Submit Report' button to user -->
+    <a href="https://survey123.arcgis.com/share/f8d97461aaa44e698d4a9e5446f59149?portalUrl=https://ufl.maps.arcgis.com" class="button" >Add an event</a>
+    <div id="viewDiv"></div>
   </body>
   
 </html>
